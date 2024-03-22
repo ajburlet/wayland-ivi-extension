@@ -27,6 +27,8 @@
 #include "wayland-util.h"
 #include "wayland-client.h"
 
+ILM_COMMON_PLATFORM_FUNC gIlmCommonPlatformFunc;
+
 static ilmErrorTypes wayland_init(t_ilm_nativedisplay nativedisplay);
 static t_ilm_nativedisplay wayland_getNativedisplay(void);
 static t_ilm_bool wayland_isInitialized(void);

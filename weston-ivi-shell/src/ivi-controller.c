@@ -1270,7 +1270,7 @@ controller_screenshot_notify(struct wl_listener *listener, void *data)
         flip_y(stride, height, readpixs);
 
     ivi_screenshot_send_done(l->screenshot, fd, width, height, stride,
-                             shm_format, output->frame_time);
+                             shm_format, output->frame_time.tv_sec * 1000 + output->frame_time.tv_nsec / 1000000);
 
 err_readpix:
     munmap(readpixs, size);

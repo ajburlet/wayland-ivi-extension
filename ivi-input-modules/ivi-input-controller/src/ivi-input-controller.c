@@ -31,7 +31,7 @@
 #include <fcntl.h>
 #include <unistd.h>
 
-#include "plugin-registry.h"
+#include <libweston/plugin-registry.h>
 #include "ilm_types.h"
 
 #include "ivi-input-server-protocol.h"
@@ -274,10 +274,7 @@ input_ctrl_kbd_snd_event_resource(struct seat_ctx *ctx_seat,
                              seat->compositor->kb_repeat_delay);
         }
 
-        wl_keyboard_send_keymap(resource,
-                       WL_KEYBOARD_KEYMAP_FORMAT_XKB_V1,
-                       keyboard->xkb_info->keymap_fd,
-                       keyboard->xkb_info->keymap_size);
+	weston_keyboard_send_keymap(keyboard, resource);
 
         wl_keyboard_send_modifiers(resource,
                        kbd_data->serial,
